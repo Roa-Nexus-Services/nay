@@ -1,94 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Buenos Días Mi Princesa</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buenas Noches 🌙</title>
 
   <style>
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family:'Segoe UI', sans-serif;
     }
 
     body{
       height:100vh;
+      overflow:hidden;
       display:flex;
       justify-content:center;
       align-items:center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      overflow:hidden;
+      background:linear-gradient(to bottom, #050816, #0d1b3d, #1b2c65);
+      position:relative;
     }
 
+    /* ESTRELLAS */
+    .star{
+      position:absolute;
+      width:3px;
+      height:3px;
+      background:white;
+      border-radius:50%;
+      animation:brillar 2s infinite alternate;
+    }
+
+    @keyframes brillar{
+      from{
+        opacity:0.2;
+        transform:scale(1);
+      }
+      to{
+        opacity:1;
+        transform:scale(1.8);
+      }
+    }
+
+    /* LUNA */
+    .moon{
+      position:absolute;
+      top:60px;
+      right:80px;
+      width:120px;
+      height:120px;
+      background:#f5f3ce;
+      border-radius:50%;
+      box-shadow:0 0 40px #fff8b0;
+    }
+
+    .moon::after{
+      content:'';
+      position:absolute;
+      top:10px;
+      left:25px;
+      width:120px;
+      height:120px;
+      background:#0d1b3d;
+      border-radius:50%;
+    }
+
+    /* TARJETA */
     .card{
-      width:350px;
-      padding:30px;
+      width:360px;
+      padding:35px;
       border-radius:25px;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
       text-align:center;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
       color:white;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      animation: aparecer 1.5s ease;
-    }
-
-    .sol{
-      font-size:70px;
-      animation: girar 10s linear infinite;
+      box-shadow:0 0 25px rgba(255,255,255,0.15);
+      animation:subir 1.5s ease;
+      z-index:10;
     }
 
     h1{
-      margin-top:10px;
-      font-size:32px;
+      font-size:34px;
+      margin-bottom:15px;
     }
 
     p{
-      margin-top:15px;
       font-size:18px;
-      line-height:1.6;
+      line-height:1.8;
+      color:#f1f1f1;
     }
 
-    .corazon{
-      color:#ff1e56;
-      animation: latido 1s infinite;
+    .heart{
+      color:#ff5c8a;
+      animation:latido 1s infinite;
       display:inline-block;
     }
 
     button{
       margin-top:25px;
-      padding:12px 25px;
+      padding:12px 28px;
       border:none;
       border-radius:30px;
-      background:white;
-      color:#ff4b7d;
+      background:#ffffff;
+      color:#1b2c65;
       font-size:16px;
+      font-weight:bold;
       cursor:pointer;
       transition:0.3s;
-      font-weight:bold;
     }
 
     button:hover{
-      transform: scale(1.08);
-      background:#ffe3ec;
+      transform:scale(1.08);
+      background:#dfe8ff;
     }
 
     @keyframes latido{
       0%{transform:scale(1);}
-      50%{transform:scale(1.3);}
+      50%{transform:scale(1.2);}
       100%{transform:scale(1);}
     }
 
-    @keyframes girar{
-      from{transform:rotate(0deg);}
-      to{transform:rotate(360deg);}
-    }
-
-    @keyframes aparecer{
+    @keyframes subir{
       from{
         opacity:0;
-        transform:translateY(30px);
+        transform:translateY(40px);
       }
       to{
         opacity:1;
@@ -100,28 +137,51 @@
 
 <body>
 
-  <div class="card">
-    <div class="sol">☀️</div>
+  <!-- Luna -->
+  <div class="moon"></div>
 
-    <h1>Buenos días ☀️</h1>
+  <!-- Estrellas -->
+  <script>
+    for(let i = 0; i < 80; i++){
+      let star = document.createElement("div");
+      star.className = "star";
+
+      star.style.top = Math.random() * window.innerHeight + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+
+      star.style.animationDuration = (Math.random() * 3 + 1) + "s";
+
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <!-- Carta -->
+  <div class="card">
+
+    <h1>Buenas noches 🌙</h1>
 
     <p>
-      Espero que hoy tu sonrisa brille más que el sol
-      y que cada momento de tu día esté lleno de paz,
-      alegría y mucho amor.  
+      Mientras las estrellas iluminan el cielo,
+      solo quería recordarte que eres una de las
+      cosas más bonitas que pasan por mi mente
+      antes de dormir.
       <br><br>
-      Tú haces bonito hasta mis pensamientos
-      <span class="corazon">❤</span>
+
+      Que la luna cuide tus sueños
+      y que descanses tan hermoso
+      como tu sonrisa ✨
+      <span class="heart">❤</span>
     </p>
 
     <button onclick="mensaje()">
       Presióname ✨
     </button>
+
   </div>
 
   <script>
     function mensaje(){
-      alert("Buenos días mi futura novia 💖\n\nQue tu día sea tan hermoso como tú.");
+      alert("Buenas noches mi futura princesa 🌙✨\n\nSueña bonito... quizás conmigo 💖");
     }
   </script>
 
