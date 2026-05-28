@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buenos Días Mi Princesa</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow:hidden;
+    }
+
+    .card{
+      width:350px;
+      padding:30px;
+      border-radius:25px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      text-align:center;
+      color:white;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      animation: aparecer 1.5s ease;
+    }
+
+    .sol{
+      font-size:70px;
+      animation: girar 10s linear infinite;
+    }
+
+    h1{
+      margin-top:10px;
+      font-size:32px;
+    }
+
+    p{
+      margin-top:15px;
+      font-size:18px;
+      line-height:1.6;
+    }
+
+    .corazon{
+      color:#ff1e56;
+      animation: latido 1s infinite;
+      display:inline-block;
+    }
+
+    button{
+      margin-top:25px;
+      padding:12px 25px;
+      border:none;
+      border-radius:30px;
+      background:white;
+      color:#ff4b7d;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+      font-weight:bold;
+    }
+
+    button:hover{
+      transform: scale(1.08);
+      background:#ffe3ec;
+    }
+
+    @keyframes latido{
+      0%{transform:scale(1);}
+      50%{transform:scale(1.3);}
+      100%{transform:scale(1);}
+    }
+
+    @keyframes girar{
+      from{transform:rotate(0deg);}
+      to{transform:rotate(360deg);}
+    }
+
+    @keyframes aparecer{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="sol">☀️</div>
+
+    <h1>Buenos días ☀️</h1>
+
+    <p>
+      Espero que hoy tu sonrisa brille más que el sol
+      y que cada momento de tu día esté lleno de paz,
+      alegría y mucho amor.  
+      <br><br>
+      Tú haces bonito hasta mis pensamientos
+      <span class="corazon">❤</span>
+    </p>
+
+    <button onclick="mensaje()">
+      Presióname ✨
+    </button>
+  </div>
+
+  <script>
+    function mensaje(){
+      alert("Buenos días mi futura novia 💖\n\nQue tu día sea tan hermoso como tú.");
+    }
+  </script>
+
+</body>
+</html>
