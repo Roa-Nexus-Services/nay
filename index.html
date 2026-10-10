@@ -3,157 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Ti ✨</title>
+<title>Para Mi Hermana 💖</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-body{
-  height:100vh;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  transition:1s;
-  position:relative;
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  position: relative;
+  padding: 20px;
 }
 
-/* MODO NOCHE */
-body.noche{
-  background:linear-gradient(to bottom, #050816, #0d1b3d, #1b2c65);
+body.noche {
+  background: linear-gradient(to bottom, #050816, #0d1b3d, #35245f);
 }
 
-/* MODO DIA */
-body.dia{
-  background:linear-gradient(to bottom, #87ceeb, #bde0ff, #ffffff);
+body.dia {
+  background: linear-gradient(to bottom, #87ceeb, #bde0ff, #fff4e6);
 }
 
-/* ESTRELLAS */
-.star{
-  position:absolute;
-  width:3px;
-  height:3px;
-  background:white;
-  border-radius:50%;
-  animation:brillar 2s infinite alternate;
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: brillar 2s infinite alternate;
 }
 
-@keyframes brillar{
-  from{
-    opacity:0.2;
-    transform:scale(1);
+@keyframes brillar {
+  from { opacity: 0.2; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.8); }
+}
+
+.moon, .sun {
+  position: absolute;
+  top: 45px;
+  right: 55px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+}
+
+.moon {
+  background: #f5f3ce;
+  box-shadow: 0 0 40px #fff8b0;
+}
+
+.moon::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 23px;
+  width: 95px;
+  height: 95px;
+  background: #0d1b3d;
+  border-radius: 50%;
+}
+
+.sun {
+  background: #ffd93d;
+  box-shadow: 0 0 60px #ffe066;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  padding: 35px 28px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 25px;
+  text-align: center;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: white;
+  box-shadow: 0 0 30px rgba(255,255,255,0.12);
+  animation: subir 1.5s ease;
+  z-index: 10;
+}
+
+body.dia .card {
+  color: #263568;
+}
+
+h1 {
+  font-size: clamp(27px, 7vw, 35px);
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.heart {
+  color: #ff5c8a;
+  display: inline-block;
+  animation: latido 1s infinite;
+}
+
+button {
+  margin-top: 25px;
+  padding: 13px 27px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #6241a5;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+button:hover {
+  transform: scale(1.06);
+}
+
+#sorpresa {
+  display: none;
+  margin-top: 20px;
+  animation: subir 0.8s ease;
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes subir {
+  from { opacity: 0; transform: translateY(35px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .moon, .sun {
+    width: 65px;
+    height: 65px;
+    top: 25px;
+    right: 25px;
   }
-  to{
-    opacity:1;
-    transform:scale(1.8);
+
+  .moon::after {
+    width: 65px;
+    height: 65px;
+    left: 17px;
+    top: -3px;
   }
-}
 
-/* LUNA */
-.moon{
-  position:absolute;
-  top:60px;
-  right:80px;
-  width:120px;
-  height:120px;
-  background:#f5f3ce;
-  border-radius:50%;
-  box-shadow:0 0 40px #fff8b0;
-}
-
-.moon::after{
-  content:'';
-  position:absolute;
-  top:10px;
-  left:25px;
-  width:120px;
-  height:120px;
-  background:#0d1b3d;
-  border-radius:50%;
-}
-
-/* SOL */
-.sun{
-  position:absolute;
-  top:60px;
-  right:80px;
-  width:120px;
-  height:120px;
-  background:#ffd93d;
-  border-radius:50%;
-  box-shadow:0 0 60px #ffe066;
-}
-
-/* TARJETA */
-.card{
-  width:360px;
-  padding:35px;
-  border-radius:25px;
-  text-align:center;
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(10px);
-  color:white;
-  box-shadow:0 0 25px rgba(255,255,255,0.15);
-  animation:subir 1.5s ease;
-  z-index:10;
-}
-
-body.dia .card{
-  color:#1b2c65;
-}
-
-h1{
-  font-size:34px;
-  margin-bottom:15px;
-}
-
-p{
-  font-size:18px;
-  line-height:1.8;
-}
-
-.heart{
-  color:#ff5c8a;
-  animation:latido 1s infinite;
-  display:inline-block;
-}
-
-button{
-  margin-top:25px;
-  padding:12px 28px;
-  border:none;
-  border-radius:30px;
-  background:#ffffff;
-  color:#1b2c65;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-button:hover{
-  transform:scale(1.08);
-}
-
-@keyframes latido{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.2);}
-  100%{transform:scale(1);}
-}
-
-@keyframes subir{
-  from{
-    opacity:0;
-    transform:translateY(40px);
+  .card {
+    padding: 30px 22px;
   }
-  to{
-    opacity:1;
-    transform:translateY(0);
+
+  p {
+    font-size: 16px;
   }
 }
 </style>
@@ -164,77 +177,81 @@ button:hover{
 <div id="astro"></div>
 
 <div class="card">
-
   <h1 id="titulo"></h1>
 
   <p id="mensajeTexto"></p>
 
   <button onclick="mensaje()">
-    Presióname ✨
+    Una sorpresita para ti ✨
   </button>
 
+  <div id="sorpresa">
+    <p>
+      Que nunca te falten motivos para sonreír,
+      fuerzas para seguir adelante y personas
+      que te recuerden lo valiosa que eres.
+      <br><br>
+      ¡Te quiero mucho, hermanita! 💖
+      <br>
+      <span class="heart">♥ ♥ ♥</span>
+    </p>
+  </div>
 </div>
 
 <script>
-
-/* DETECTAR HORA */
 const hora = new Date().getHours();
 
 const body = document.body;
 const astro = document.getElementById("astro");
 const titulo = document.getElementById("titulo");
 const mensajeTexto = document.getElementById("mensajeTexto");
+const sorpresa = document.getElementById("sorpresa");
 
-/* SI ES DE DIA */
-if(hora >= 6 && hora < 18){
-
+if (hora >= 6 && hora < 18) {
   body.classList.add("dia");
+  astro.innerHTML = '<div class="sun"></div>';
 
-  astro.innerHTML = `<div class="sun"></div>`;
-
-  titulo.innerHTML = "Buenos días ☀️";
+  titulo.innerHTML = '¡Feliz inicio de semana! ☀️';
 
   mensajeTexto.innerHTML = `
-    Espero que hoy tengas un día tan bonito
-    como tu sonrisa ✨<br><br>
+    Buenos días, hermanita hermosa. 💖<br><br>
 
-    Me encantó encontrarte y tener la oportunidad
-    de coincidir contigo, porque desde que llegaste
-    haces mis días mucho más especiales 💖
+    Deseo de todo corazón que esta nueva semana
+    llegue cargada de bendiciones, salud,
+    alegría y muchas oportunidades bonitas
+    para tu vida. ✨<br><br>
+
+    Que cada día tengas nuevas razones para
+    sonreír y la fuerza necesaria para cumplir
+    todo lo que te propongas. Nunca olvides
+    lo especial y valiosa que eres. 🌷
   `;
 
+} else {
+  body.classList.add("noche");
+  astro.innerHTML = '<div class="moon"></div>';
+
+  titulo.innerHTML = 'Una nueva semana 🌙';
+
+  mensajeTexto.innerHTML = `
+    Hermanita, que esta nueva semana que comienza
+    esté llena de paz, bendiciones y nuevas
+    oportunidades para ti. 💖<br><br>
+
+    Que Dios cuide tus pasos, ilumine tus decisiones
+    y te regale motivos para sonreír cada día.
+    Descansa con el corazón tranquilo,
+    porque vienen nuevas oportunidades. ✨
+  `;
 }
 
-/* SI ES DE NOCHE */
-else{
-
-  body.classList.add("noche");
-
-  astro.innerHTML = `<div class="moon"></div>`;
-
-  titulo.innerHTML = "Buenas noches 🌙";
-
-  mensajeTexto.innerHTML = `
-    Mientras las estrellas iluminan el cielo,
-    solo quería recordarte que eres una de las
-    cosas más bonitas que pasan por mi mente
-    antes de dormir ✨<br><br>
-
-    Que la luna cuide tus sueños y descanses
-    tan hermoso como tu sonrisa 💖
-  `;
-
-  /* CREAR ESTRELLAS */
-  for(let i = 0; i < 80; i++){
-
-    let star = document.createElement("div");
-
+// Crear estrellas por la noche
+if (hora < 6 || hora >= 18) {
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement("div");
     star.className = "star";
-
-    star.style.top = Math.random() * window.innerHeight + "px";
-
-    star.style.left = Math.random() * window.innerWidth + "px";
-
+    star.style.top = Math.random() * 100 + "%";
+    star.style.left = Math.random() * 100 + "%";
     star.style.animationDuration =
       (Math.random() * 3 + 1) + "s";
 
@@ -242,21 +259,21 @@ else{
   }
 }
 
-function mensaje(){
+function mensaje() {
+  sorpresa.style.display = "block";
 
-  if(hora >= 6 && hora < 18){
+  const boton = document.querySelector("button");
+  boton.innerHTML = "¡Te quiero, hermanita! 💖";
+  boton.disabled = true;
 
-    alert("Buenos días Nayibet ☀️✨\n\nEspero que hoy sonrías muchísimo 💖");
-
-  }else{
-
-    alert("Buenas noches Nayibet 🌙✨\n\nSueña bonito... quizás conmigo 💖");
-
-  }
+  // Pequeño desplazamiento para mostrar la sorpresa
+  sorpresa.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
 }
-
 </script>
 
 </body>
 </html>
-```
+
